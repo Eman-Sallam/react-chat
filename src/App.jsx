@@ -12,7 +12,7 @@ const App = () => {
 
   const [sessions, setSessions] = useState(chatSessionsHistory || []);
   const [selectedSessionID, setSelectedSessionID] = useState(
-    sessions ? sessions[0].id : null
+    sessions && sessions.lenght > 0 ? sessions[0].id : null
   );
 
   return (
