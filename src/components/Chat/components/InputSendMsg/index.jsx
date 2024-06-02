@@ -44,8 +44,12 @@ const InputSendMsg = () => {
             />
           </div>
           <div className="col-3 col-md-2">
-            <button type="submit" disabled={!msgTxt} className="btn btn-primary w-100 fw-bold">
-              Send
+            <button
+              type="submit"
+              disabled={!msgTxt}
+              className="btn btn-primary w-100 fw-bold icon-link justify-content-center"
+            >
+              Send <i className="fa-solid fa-paper-plane"></i>
             </button>
           </div>
         </div>
