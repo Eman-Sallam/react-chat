@@ -1,9 +1,0 @@
-.navbar {
-  height: 60px;
-}
-.inputSendMsg {
-  height: 70px;
-}
-.chat-sessions-container {
-  height: calc(100vh - 60px);
-}
