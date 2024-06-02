@@ -1,3 +1,9 @@
 .sessionItem {
   cursor: pointer;
 }
+.sessionItem:last-child {
+  border-bottom: none !important;
+}
+.selected {
+  background: #412d54;
+}

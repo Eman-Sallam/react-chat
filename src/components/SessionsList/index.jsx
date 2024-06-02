@@ -3,12 +3,15 @@ import { ChatSessionsContext } from '../../App';
 import SessionItem from './components/SessionItem';
 
 const SessionsList = () => {
-  let { sessions } = useContext(ChatSessionsContext);
+  let { sessions, selectedSession } = useContext(ChatSessionsContext);
   return (
     <>
       {sessions &&
         sessions.map((session) => (
-          <SessionItem sessionItem={session} key={session.id}></SessionItem>
+          <SessionItem
+            sessionDetails={session}
+            isSelected={session === selectedSession}
+            key={session.id}></SessionItem>
         ))}
     </>
   );

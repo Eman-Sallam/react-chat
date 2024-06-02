@@ -3,12 +3,12 @@ import { ChatSessionsContext } from '../../../../App';
 import dayjs from 'dayjs';
 import style from './index.module.css';
 
-const SessionItem = ({ sessionItem }) => {
+const SessionItem = ({ sessionDetails, isSelected }) => {
   let { sessions, setSessions, setSelectedSession } =
     useContext(ChatSessionsContext);
 
   const handleSelectedSession = () => {
-    setSelectedSession(sessionItem);
+    setSelectedSession(sessionDetails);
   };
 
   // Compare the current date with the display date to display "Today"
@@ -30,17 +30,19 @@ const SessionItem = ({ sessionItem }) => {
   };
 
   return (
-    <div className='position-relative'>
+    <div
+      className={`position-relative' border-bottom border-primary-subtle   
+    ${style.sessionItem} ${isSelected ? style.selected : ''}`}>
       <div
-        className={`border-bottom border-primary-subtle p-2 ${style.sessionItem}`}
+        className={`p-2 ${isSelected && style.selected}`}
         onClick={handleSelectedSession}>
-        Chat Started at {displayForamttedDate(sessionItem.dateTime)}
+        Chat Started at {displayForamttedDate(sessionDetails.dateTime)}
       </div>
       <div className='position-absolute top-0 end-0 '>
         <button
           type='button'
           title='Delete Session'
-          onClick={() => handleDeleteSession(sessionItem.id)}
+          onClick={() => handleDeleteSession(sessionDetails.id)}
           className='btn btn-link link-light link-opacity-50 link-opacity-100-hover px-1 py-0'>
           <i className='fa-regular fa-circle-xmark'></i>
         </button>
