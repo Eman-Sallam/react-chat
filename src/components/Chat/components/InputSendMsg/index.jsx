@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ChatContext } from '../../../../App';
+import { ChatSessionsContext } from '../../../../App';
 
 const InputSendMsg = () => {
-  let { messages, setMessages } = useContext(ChatContext);
+  let { messages, setMessages } = useContext(ChatSessionsContext);
 
   const [msgTxt, setMsgTxt] = useState('');
 
@@ -14,11 +14,17 @@ const InputSendMsg = () => {
   const handleSendMsg = (e) => {
     e.preventDefault();
 
-    setMessages([...messages, { user: 'owner', id: Date.now(), text: msgTxt }]);
+    setMessages([
+      ...messages,
+      { sender: 'user', id: Date.now(), content: msgTxt }
+    ]);
 
     // Handle parrot back msg
     setTimeout(() => {
-      setMessages((prevMessages) => [...prevMessages, { user: '', id: Date.now(), text: msgTxt }]);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { sender: 'bot', id: Date.now(), content: msgTxt }
+      ]);
     }, 1000);
     setMsgTxt('');
   };
@@ -29,27 +35,26 @@ const InputSendMsg = () => {
   }, [messages]);
 
   return (
-    <div className="bg-secondary px-2 py-3 inputSendMsg">
-      <form className="px-1" onSubmit={handleSendMsg}>
-        <div className="row gx-3">
-          <div className="col-9 col-md-10">
+    <div className='bg-secondary px-2 py-3 inputSendMsg'>
+      <form className='px-1' onSubmit={handleSendMsg}>
+        <div className='row gx-3'>
+          <div className='col-9 col-md-10'>
             <input
-              className="form-control"
-              type="text"
+              className='form-control'
+              type='text'
               onChange={handleOnChange}
-              placeholder="Enter Message..."
-              name="message"
-              aria-label="Enter Message..."
+              placeholder='Enter Message...'
+              name='message'
+              aria-label='Enter Message...'
               value={msgTxt}
             />
           </div>
-          <div className="col-3 col-md-2">
+          <div className='col-3 col-md-2'>
             <button
-              type="submit"
+              type='submit'
               disabled={!msgTxt}
-              className="btn btn-primary w-100 fw-bold icon-link justify-content-center"
-            >
-              Send <i className="fa-solid fa-paper-plane"></i>
+              className='btn btn-primary w-100 fw-bold icon-link justify-content-center'>
+              Send <i className='fa-solid fa-paper-plane'></i>
             </button>
           </div>
         </div>

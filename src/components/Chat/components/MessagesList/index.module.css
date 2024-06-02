@@ -1,6 +1,6 @@
 .messagesList {
-  height: calc(100vh - 130px);
-  min-height: 100%;
+  /* height: calc(100vh - 130px); */
+  min-height: calc(100% - 70px);
   padding: 12px;
   margin: 0 auto;
   overflow: hidden scroll;

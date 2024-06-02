@@ -5,9 +5,9 @@ const MessageItem = ({ msg }) => {
   return (
     <div
       className={`${style.messageItem} 
-    ${msg.user === 'owner' && style.messageItemOwn}`}
+    ${msg.sender === 'user' && style.messageItemOwn}`}
     >
-      {msg.text}
+      {msg.content}
     </div>
   );
 };

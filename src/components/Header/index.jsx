@@ -1,36 +1,47 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import logo from '../../assets/logo-horizontal.webp';
-import { ChatContext } from '../../App';
+import dayjs from 'dayjs';
+
+import { ChatSessionsContext } from '../../App';
 
 const Header = () => {
-  let { setMessages } = useContext(ChatContext);
-  const clearHistory = () => {
-    localStorage.removeItem('messages');
-    setMessages([]);
+  let { sessions, setSessions } = useContext(ChatSessionsContext);
+
+  const handleStartNewSession = () => {
+    setSessions([
+      ...sessions,
+      {
+        id: Date.now(),
+        dateTime: Date.now(),
+        messages: []
+      }
+    ]);
   };
+
+  // Update Sessions to localstorge
+  useEffect(() => {
+    localStorage.setItem('sessions', JSON.stringify(sessions));
+  }, [sessions]);
+
   return (
     <>
-      <nav className="navbar bg-light border-2 border-primary border-bottom">
-        <div className="container-fluid">
-          <span className="navbar-brand">
-            <img src={logo} alt="Logo" width="100px" className="d-inline-block align-text-top" />
+      <nav className='navbar bg-light border-2 border-primary border-bottom'>
+        <div className='container-fluid'>
+          <span className='navbar-brand'>
+            <img
+              src={logo}
+              alt='Logo'
+              width='100px'
+              className='d-inline-block align-text-top'
+            />
           </span>
-          <div className="d-flex">
+          <div className='d-flex'>
             <button
-              type="button"
-              className="btn btn-outline-primary btn-sm"
-              // onClick={clearHistory}
-              title="Start New Chat"
-            >
-              <i className="fa-solid fa-plus"></i>
-            </button>
-            <button
-              type="button"
-              className="btn btn-outline-primary btn-sm ms-2"
-              onClick={clearHistory}
-              title="Clear History"
-            >
-              <i className="fa-solid fa-trash"></i>
+              type='button'
+              className='btn btn-outline-primary btn-sm'
+              onClick={handleStartNewSession}
+              title='Start New Chat'>
+              <i className='fa-solid fa-plus'></i>
             </button>
           </div>
         </div>
