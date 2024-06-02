@@ -1,0 +1,9 @@
+.messagesList {
+  height: calc(100vh - 130px);
+  min-height: 100%;
+  padding: 12px;
+  margin: 0 auto;
+  overflow: hidden scroll;
+  transform: rotate(180deg);
+  direction: rtl;
+}

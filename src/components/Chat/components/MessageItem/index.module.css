@@ -1,0 +1,18 @@
+.messageItem {
+  padding: 10px 20px;
+  border-radius: 12px;
+  color: #180030;
+  background-color: #f5f7fb;
+  max-width: 600px;
+  position: relative;
+  margin: 12px 0;
+  word-break: break-all;
+  transform: rotate(180deg);
+  direction: ltr;
+}
+
+.messageItemOwn {
+  color: #3a274e;
+  margin-left: auto;
+  background-color: rgba(128, 0, 255, 0.1);
+}

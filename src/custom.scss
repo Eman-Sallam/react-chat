@@ -1,0 +1,13 @@
+// overwrite theme variables
+
+//  theme
+$primary: #9b45f1;
+$secondary: #180030;
+$dark: #171717;
+
+$input-bg: rgba(255, 255, 255, 0.15);
+$input-color: #fff;
+$input-border-color: rgba(255, 255, 255, 0.2);
+
+// import bootstrap styles at the bottom!
+@import '~bootstrap/scss/bootstrap.scss';
