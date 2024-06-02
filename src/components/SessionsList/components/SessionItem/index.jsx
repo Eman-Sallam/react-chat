@@ -4,11 +4,11 @@ import dayjs from 'dayjs';
 import style from './index.module.css';
 
 const SessionItem = ({ sessionDetails, isSelected }) => {
-  let { sessions, setSessions, setSelectedSession } =
+  let { sessions, setSessions, setSelectedSessionID } =
     useContext(ChatSessionsContext);
 
-  const handleSelectedSession = () => {
-    setSelectedSession(sessionDetails);
+  const handleSelectedSessionID = () => {
+    setSelectedSessionID(sessionDetails.id);
   };
 
   // Compare the current date with the display date to display "Today"
@@ -31,11 +31,11 @@ const SessionItem = ({ sessionDetails, isSelected }) => {
 
   return (
     <div
-      className={`position-relative' border-bottom border-primary-subtle   
+      className={`position-relative border-bottom border-primary-subtle   
     ${style.sessionItem} ${isSelected ? style.selected : ''}`}>
       <div
         className={`p-2 ${isSelected && style.selected}`}
-        onClick={handleSelectedSession}>
+        onClick={handleSelectedSessionID}>
         Chat Started at {displayForamttedDate(sessionDetails.dateTime)}
       </div>
       <div className='position-absolute top-0 end-0 '>

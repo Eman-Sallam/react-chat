@@ -11,11 +11,18 @@ const App = () => {
   const chatSessionsHistory = JSON.parse(localStorage.getItem('sessions'));
 
   const [sessions, setSessions] = useState(chatSessionsHistory || []);
-  const [selectedSession, setSelectedSession] = useState(null);
+  const [selectedSessionID, setSelectedSessionID] = useState(
+    sessions ? sessions[0].id : null
+  );
 
   return (
     <ChatSessionsContext.Provider
-      value={{ sessions, setSessions, selectedSession, setSelectedSession }}>
+      value={{
+        sessions,
+        setSessions,
+        selectedSessionID,
+        setSelectedSessionID
+      }}>
       <div className='m-0 p-0 bg-white'>
         <Header></Header>
         <div className='row g-0 chat-sessions-container'>

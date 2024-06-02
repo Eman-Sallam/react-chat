@@ -2,41 +2,62 @@ import React, { useState, useEffect, useContext } from 'react';
 import { ChatSessionsContext } from '../../../../App';
 
 const InputSendMsg = () => {
-  let { messages, setMessages } = useContext(ChatSessionsContext);
+  let { sessions, setSessions, selectedSessionID } =
+    useContext(ChatSessionsContext);
 
+  // Saving new msg txt
   const [msgTxt, setMsgTxt] = useState('');
-
   const handleOnChange = (e) => {
     setMsgTxt(e.target.value);
   };
 
+  // handle update sessions with new msgs
+  const handleUpdateSessions = (index, sender) => {
+    const SessionsArr = [...sessions];
+    SessionsArr[index].messages.push({
+      sender: sender,
+      id: Date.now(),
+      content: msgTxt
+    });
+    return SessionsArr;
+  };
+
   // Adding a new chat msg
-  const handleSendMsg = (e) => {
+  const handleSendMsg = (e, selectedSessionID) => {
     e.preventDefault();
 
-    setMessages([
-      ...messages,
-      { sender: 'user', id: Date.now(), content: msgTxt }
-    ]);
+    const selectedSessionIndex = sessions.findIndex(
+      (session) => session.id === selectedSessionID
+    );
+
+    const updatedSessionsUserMsg = handleUpdateSessions(
+      selectedSessionIndex,
+      'user'
+    );
+    setSessions(updatedSessionsUserMsg);
 
     // Handle parrot back msg
     setTimeout(() => {
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { sender: 'bot', id: Date.now(), content: msgTxt }
-      ]);
+      const updatedSessionsBotMsg = handleUpdateSessions(
+        selectedSessionIndex,
+        'bot'
+      );
+      setSessions(updatedSessionsBotMsg);
     }, 1000);
+
     setMsgTxt('');
   };
 
   // Update msgs to localstorge
   useEffect(() => {
-    localStorage.setItem('messages', JSON.stringify(messages));
-  }, [messages]);
+    localStorage.setItem('sessions', JSON.stringify(sessions));
+  }, [sessions]);
 
   return (
     <div className='bg-secondary px-2 py-3 inputSendMsg'>
-      <form className='px-1' onSubmit={handleSendMsg}>
+      <form
+        className='px-1'
+        onSubmit={(e) => handleSendMsg(e, selectedSessionID)}>
         <div className='row gx-3'>
           <div className='col-9 col-md-10'>
             <input

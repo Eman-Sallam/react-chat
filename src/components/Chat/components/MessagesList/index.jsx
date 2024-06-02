@@ -4,12 +4,16 @@ import MessageItem from '../MessageItem';
 import style from './index.module.css';
 
 const MessagesList = () => {
-  let { selectedSession } = useContext(ChatSessionsContext);
+  let { sessions, selectedSessionID } = useContext(ChatSessionsContext);
+  const selectedSessionData = sessions.filter(
+    (session) => session.id === selectedSessionID
+  )[0];
+
   return (
     <div className={style.messagesList}>
       <div className='d-flex justify-content-end flex-column-reverse'>
-        {selectedSession?.messages &&
-          selectedSession.messages.map((msg) => (
+        {selectedSessionData &&
+          selectedSessionData.messages.map((msg) => (
             <MessageItem msg={msg} key={msg.id}></MessageItem>
           ))}
       </div>
