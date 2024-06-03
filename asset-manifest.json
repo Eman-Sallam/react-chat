@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/react-chat/static/css/main.9e004fcd.css",
+    "main.css": "/react-chat/static/css/main.1a0ed4d7.css",
     "main.js": "/react-chat/static/js/main.d3c9f062.js",
     "static/media/fa-solid-900.ttf": "/react-chat/static/media/fa-solid-900.bacd5de623fb563b961a.ttf",
     "static/media/fa-brands-400.ttf": "/react-chat/static/media/fa-brands-400.60127e352b7a11f7f1bc.ttf",
@@ -12,11 +12,11 @@
     "static/media/fa-v4compatibility.ttf": "/react-chat/static/media/fa-v4compatibility.c8e090db312b0bea2aa2.ttf",
     "static/media/fa-v4compatibility.woff2": "/react-chat/static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
     "index.html": "/react-chat/index.html",
-    "main.9e004fcd.css.map": "/react-chat/static/css/main.9e004fcd.css.map",
+    "main.1a0ed4d7.css.map": "/react-chat/static/css/main.1a0ed4d7.css.map",
     "main.d3c9f062.js.map": "/react-chat/static/js/main.d3c9f062.js.map"
   },
   "entrypoints": [
-    "static/css/main.9e004fcd.css",
+    "static/css/main.1a0ed4d7.css",
     "static/js/main.d3c9f062.js"
   ]
 }
