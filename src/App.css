@@ -1,9 +1,14 @@
-.navbar {
+.navbar,
+.offcanvas-header {
   height: 60px;
 }
 .inputSendMsg {
   height: 70px;
 }
-.chat-sessions-container {
+.sessions-container {
   height: calc(100vh - 60px);
+  overflow-y: scroll;
+}
+.header-btn {
+  width: 40px;
 }

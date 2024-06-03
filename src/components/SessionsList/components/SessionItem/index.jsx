@@ -2,13 +2,23 @@ import React, { useContext } from 'react';
 import { ChatSessionsContext } from '../../../../App';
 import dayjs from 'dayjs';
 import style from './index.module.css';
+import * as bootstrap from 'bootstrap';
+window.bootstrap = bootstrap;
 
 const SessionItem = ({ sessionDetails, isSelected }) => {
-  let { sessions, setSessions, setSelectedSessionID } =
+  let { isSmallScreen, sessions, setSessions, setSelectedSessionID } =
     useContext(ChatSessionsContext);
 
   const handleSelectedSessionID = () => {
     setSelectedSessionID(sessionDetails.id);
+
+    // to Close side menu on small screen after select session
+    if (isSmallScreen) {
+      let bsOffcanvas = bootstrap.Offcanvas.getInstance(
+        document.getElementById('mobileSessions')
+      );
+      bsOffcanvas.hide();
+    }
   };
 
   // Compare the current date with the display date to display "Today"
@@ -27,6 +37,8 @@ const SessionItem = ({ sessionDetails, isSelected }) => {
     const updatedSessions = sessions.filter((session) => session.id !== id);
     setSessions([...updatedSessions]);
     localStorage.setItem('sessions', JSON.stringify(updatedSessions));
+
+    setSelectedSessionID(updatedSessions[0].id);
   };
 
   return (
@@ -34,11 +46,10 @@ const SessionItem = ({ sessionDetails, isSelected }) => {
       className={`position-relative border-bottom border-primary-subtle   
                 ${style.sessionItem} ${isSelected ? style.selected : ''}`}>
       <div
-        className={`p-3 d-flex align-items-center ${
-          isSelected && style.selected
-        }`}
+        className={`p-3 d-flex align-items-center 
+                  ${isSelected && style.selected}`}
         onClick={handleSelectedSessionID}>
-        <i className={`fa-solid fa-comment-dots fa-xl ${style.chatIcn}`}></i>
+        <i className={`fa-solid fa-comment-dots fa-lg ${style.chatIcn}`}></i>
         <span className='fw-semibold'>Chat Started at</span>
         <span className='fst-italic ms-1'>
           {displayForamttedDate(sessionDetails.dateTime)}
@@ -51,7 +62,7 @@ const SessionItem = ({ sessionDetails, isSelected }) => {
             title='Delete Session'
             onClick={() => handleDeleteSession(sessionDetails.id)}
             className='btn btn-link link-light link-opacity-50 link-opacity-100-hover px-1 py-0'>
-            <i className='fa-regular fa-circle-xmark'></i>
+            <i className='fa-solid fa-trash fa-sm'></i>
           </button>
         </div>
       )}

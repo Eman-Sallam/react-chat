@@ -1,36 +1,53 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import style from './index.module.css';
+import { ChatSessionsContext } from '../../../../App';
 
 const MessageItem = ({ msg }) => {
   const isUserMsg = msg.sender === 'user';
+  let { isSmallScreen } = useContext(ChatSessionsContext);
   return (
     <>
-      <div
-        className={`${style.messageContainer} 
-                    ${isUserMsg && style.messageContainerUser}`}>
+      {isUserMsg ? (
         <div
-          className={`row align-items-end gx-2
-                      ${isUserMsg && 'flex-row-reverse'}`}>
-          <div className='col-auto'>
-            <div
-              className={`${style.senderImg}
-                          ${isUserMsg ? 'bg-primary' : 'bg-secondary'}`}>
-              {isUserMsg ? (
-                <i className='fa-solid fa-user fa-xl'></i>
-              ) : (
-                <i className='fa-solid fa-user-astronaut fa-xl'></i>
-              )}
+          className={`${style.messageContainer} ${style.messageContainerUser}`}>
+          <div className='row align-items-end gx-2 flex-row-reverse'>
+            <div className='col-auto'>
+              <div
+                className={`${
+                  isSmallScreen ? style.senderImgSm : style.senderImg
+                } bg-primary`}>
+                <i
+                  className={`${
+                    isSmallScreen ? style.faSm : style.faLg
+                  } fa-solid fa-user`}></i>
+              </div>
             </div>
-          </div>
-          <div className='col'>
-            <div
-              className={`${style.messageItem} 
-                          ${isUserMsg && style.messageItemUser}`}>
-              {msg.content}
+            <div className='col'>
+              <div className={`${style.messageItem}  ${style.messageItemUser}`}>
+                {msg.content}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className={style.messageContainer}>
+          <div className='row align-items-end gx-2'>
+            <div className='col-auto'>
+              <div
+                className={`${style.senderImg} 
+        ${isSmallScreen && style.senderImgSm} bg-secondary`}>
+                <i
+                  className={`${
+                    isSmallScreen ? style.faSm : style.faLg
+                  } fa-solid fa-user-astronaut`}></i>
+              </div>
+            </div>
+            <div className='col'>
+              <div className={style.messageItem}>{msg.content}</div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

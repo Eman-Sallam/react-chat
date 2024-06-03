@@ -1,33 +1,29 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import { ChatSessionsContext } from '../../App';
 
 const NewSessionBtn = () => {
-  let { sessions, setSessions } = useContext(ChatSessionsContext);
+  let { sessions, setSessions, setSelectedSessionID } =
+    useContext(ChatSessionsContext);
 
   const handleStartNewSession = () => {
-    setSessions([
-      ...sessions,
-      {
-        id: Date.now(),
-        dateTime: Date.now(),
-        messages: []
-      }
-    ]);
+    const SessionsArr = [...sessions];
+    SessionsArr.push({
+      id: Date.now(),
+      dateTime: Date.now(),
+      messages: []
+    });
+    setSessions(SessionsArr);
+    setSelectedSessionID(SessionsArr[SessionsArr.length - 1].id);
   };
-
-  // Update Sessions to localstorge
-  useEffect(() => {
-    localStorage.setItem('sessions', JSON.stringify(sessions));
-  }, [sessions]);
 
   return (
     <button
       type='button'
-      className='btn btn-outline-primary btn-sm'
+      className='btn btn-outline-primary btn-sm header-btn'
       onClick={handleStartNewSession}
       title='Start New Chat'>
-      <i className='fa-solid fa-plus'></i>
+      <i className='fa-solid fa-plus fa-lg'></i>
     </button>
   );
 };

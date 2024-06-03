@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { ChatSessionsContext } from '../../../../App';
 
 const InputSendMsg = () => {
@@ -48,17 +48,12 @@ const InputSendMsg = () => {
     setMsgTxt('');
   };
 
-  // Update msgs to localstorge
-  useEffect(() => {
-    localStorage.setItem('sessions', JSON.stringify(sessions));
-  }, [sessions]);
-
   return (
     <div className='bg-secondary px-2 py-3 inputSendMsg'>
       <form
         className='px-1'
         onSubmit={(e) => handleSendMsg(e, selectedSessionID)}>
-        <div className='row gx-3'>
+        <div className='row gx-2'>
           <div className='col-9 col-md-10'>
             <input
               className='form-control'

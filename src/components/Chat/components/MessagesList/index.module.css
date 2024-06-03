@@ -1,8 +1,11 @@
-.messagesList {
-  /* height: calc(100vh - 130px); */
+.messagesContainer {
+  height: calc(100vh - 130px);
   min-height: calc(100% - 70px);
   padding: 12px;
   margin: 0 auto;
+}
+.messagesList {
+  height: 100%;
   overflow: hidden scroll;
   transform: rotate(180deg);
   direction: rtl;

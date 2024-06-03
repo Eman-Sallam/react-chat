@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 const SessionsList = () => {
   let { sessions, selectedSessionID } = useContext(ChatSessionsContext);
 
+  // Sorting Sessions by time
   const reverseSessionsArrOrder = sessions.sort((a, b) =>
     dayjs(a.dateTime).isBefore(dayjs(b.dateTime)) ? 1 : -1
   );
