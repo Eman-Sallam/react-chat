@@ -17,7 +17,7 @@ const SessionItem = ({ sessionDetails, isSelected }) => {
     if (currentDate.isSame(dateTime, 'day')) {
       return `Today ${dayjs(dateTime).format('HH:mm')}`;
     } else {
-      const formattedDate = dayjs(dateTime).format('MMM DD');
+      const formattedDate = dayjs(dateTime).format('MMM DD HH:mm');
       return formattedDate;
     }
   };
@@ -32,21 +32,29 @@ const SessionItem = ({ sessionDetails, isSelected }) => {
   return (
     <div
       className={`position-relative border-bottom border-primary-subtle   
-    ${style.sessionItem} ${isSelected ? style.selected : ''}`}>
+                ${style.sessionItem} ${isSelected ? style.selected : ''}`}>
       <div
-        className={`p-2 ${isSelected && style.selected}`}
+        className={`p-3 d-flex align-items-center ${
+          isSelected && style.selected
+        }`}
         onClick={handleSelectedSessionID}>
-        Chat Started at {displayForamttedDate(sessionDetails.dateTime)}
+        <i className={`fa-solid fa-comment-dots fa-xl ${style.chatIcn}`}></i>
+        <span className='fw-semibold'>Chat Started at</span>
+        <span className='fst-italic ms-1'>
+          {displayForamttedDate(sessionDetails.dateTime)}
+        </span>
       </div>
-      <div className='position-absolute top-0 end-0 '>
-        <button
-          type='button'
-          title='Delete Session'
-          onClick={() => handleDeleteSession(sessionDetails.id)}
-          className='btn btn-link link-light link-opacity-50 link-opacity-100-hover px-1 py-0'>
-          <i className='fa-regular fa-circle-xmark'></i>
-        </button>
-      </div>
+      {sessions.length > 1 && (
+        <div className='position-absolute top-0 end-0 '>
+          <button
+            type='button'
+            title='Delete Session'
+            onClick={() => handleDeleteSession(sessionDetails.id)}
+            className='btn btn-link link-light link-opacity-50 link-opacity-100-hover px-1 py-0'>
+            <i className='fa-regular fa-circle-xmark'></i>
+          </button>
+        </div>
+      )}
     </div>
   );
 };

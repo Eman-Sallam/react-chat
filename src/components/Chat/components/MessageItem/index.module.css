@@ -1,8 +1,4 @@
-.messageItem {
-  padding: 10px 20px;
-  border-radius: 12px;
-  color: #180030;
-  background-color: #f5f7fb;
+.messageContainer {
   max-width: 700px;
   position: relative;
   margin: 12px 0;
@@ -10,9 +6,28 @@
   transform: rotate(180deg);
   direction: ltr;
 }
-
-.messageItemOwn {
-  color: #3a274e;
+.messageContainerUser {
   margin-left: auto;
+}
+
+.messageItem {
+  padding: 10px 20px;
+  border-radius: 12px;
+  color: #180030;
+  background-color: #f5f7fb;
+}
+
+.messageItemUser {
+  color: #3a274e;
   background-color: rgba(128, 0, 255, 0.1);
+}
+
+.senderImg {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }

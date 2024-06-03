@@ -7,3 +7,7 @@
 .selected {
   background: #412d54;
 }
+.chatIcn {
+  transform: scaleX(-1);
+  margin-right: 8px;
+}
