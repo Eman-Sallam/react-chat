@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ChatSessionsContext } from '../../../../App';
+import { ChatSessionsContext } from '../../../../Context/Sessions';
 import MessageItem from '../MessageItem';
 import style from './index.module.css';
 

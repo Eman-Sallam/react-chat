@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { ChatSessionsContext } from '../../App';
+import { ChatSessionsContext } from '../../Context/Sessions';
 
 const NewSessionBtn = () => {
   let { sessions, setSessions, setSelectedSessionID } =

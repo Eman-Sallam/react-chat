@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { ChatSessionsContext } from '../../App';
 import SessionItem from './components/SessionItem';
 import dayjs from 'dayjs';
+import { ChatSessionsContext } from '../../Context/Sessions';
 
 const SessionsList = () => {
   let { sessions, selectedSessionID } = useContext(ChatSessionsContext);

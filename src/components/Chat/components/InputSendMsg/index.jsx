@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { ChatSessionsContext } from '../../../../App';
+import { ChatSessionsContext } from '../../../../Context/Sessions';
 
 const InputSendMsg = () => {
   let { sessions, setSessions, selectedSessionID } =

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ChatSessionsContext } from '../../../../App';
+import { ChatSessionsContext } from '../../../../Context/Sessions';
 import dayjs from 'dayjs';
 import style from './index.module.css';
 import * as bootstrap from 'bootstrap';

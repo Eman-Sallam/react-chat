@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import logo from '../../assets/logo-horizontal.webp';
 import NewSessionBtn from '../NewSessionBtn';
 import SessionsSmallScreen from '../SessionsSmallScreen';
-import { ChatSessionsContext } from '../../App';
+import { ChatSessionsContext } from '../../Context/Sessions';
 
 const Header = () => {
   let { isSmallScreen } = useContext(ChatSessionsContext);
