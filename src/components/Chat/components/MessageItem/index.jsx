@@ -4,8 +4,7 @@ import { ChatSessionsContext } from '../../../../Context/Sessions';
 
 const MessageItem = ({ msg }) => {
   const isUserMsg = msg.sender === 'user';
-  let { isSmallScreen } = useContext(ChatSessionsContext);
-
+  let { isSmallScreen, displayForamttedDate } = useContext(ChatSessionsContext);
   return (
     <>
       {isUserMsg ? (
@@ -14,8 +13,8 @@ const MessageItem = ({ msg }) => {
           <div className='row align-items-end gx-2 flex-row-reverse'>
             <div className='col-auto'>
               <div
-                className={`${
-                  isSmallScreen ? style.senderImgSm : style.senderImg
+                className={`${style.senderImg} ${
+                  isSmallScreen ? style.senderImgSm : style.senderImgLg
                 } bg-primary`}>
                 <i
                   className={`${
@@ -24,9 +23,14 @@ const MessageItem = ({ msg }) => {
               </div>
             </div>
             <div className='col'>
-              <div className={`${style.messageItem}  ${style.messageItemUser}`}>
+              <div className={`${style.messageItem} ${style.messageItemUser}`}>
                 {msg.content}
               </div>
+              <p
+                className={`${style.messageTime} m-0 text-black-50 px-3  text-end fw-medium`}>
+                {/* used is as time */}
+                {displayForamttedDate(msg.id)}
+              </p>
             </div>
           </div>
         </div>
@@ -36,7 +40,9 @@ const MessageItem = ({ msg }) => {
             <div className='col-auto'>
               <div
                 className={`${style.senderImg} 
-        ${isSmallScreen && style.senderImgSm} bg-secondary`}>
+                  ${
+                    isSmallScreen ? style.senderImgSm : style.senderImgLg
+                  } bg-secondary`}>
                 <i
                   className={`${
                     isSmallScreen ? style.faSm : style.faLg
@@ -45,6 +51,10 @@ const MessageItem = ({ msg }) => {
             </div>
             <div className='col'>
               <div className={style.messageItem}>{msg.content}</div>
+              <p
+                className={`${style.messageTime} m-0 text-black-50 px-3  text-start fw-medium`}>
+                {displayForamttedDate(msg.id)}
+              </p>
             </div>
           </div>
         </div>

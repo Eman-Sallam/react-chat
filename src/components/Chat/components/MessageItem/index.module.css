@@ -11,7 +11,7 @@
 }
 
 .messageItem {
-  padding: 10px 20px;
+  padding: 10px 16px;
   border-radius: 12px;
   color: #180030;
   background-color: #f5f7fb;
@@ -21,28 +21,29 @@
   color: #3a274e;
   background-color: rgba(128, 0, 255, 0.1);
 }
-
 .senderImg {
-  width: 44px;
-  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
+  margin-bottom: 22px;
+}
+.senderImgLg {
+  width: 44px;
+  height: 44px;
 }
 .senderImgSm {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
 }
 .senderImg .faLg {
   font-size: 1.5em;
 }
 .senderImgSm .faSm {
   font-size: 1.25em;
+}
+.messageTime {
+  font-size: 12px;
+  padding: 2px 16px;
 }

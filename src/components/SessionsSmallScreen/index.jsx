@@ -18,7 +18,6 @@ const SessionsSmallScreen = () => {
         className='offcanvas offcanvas-start shadow-lg'
         tabIndex='-1'
         id='mobileSessions'
-        data-bs-backdrop='false'
         aria-labelledby='offcanvasExampleLabel'>
         <div className='offcanvas-header bg-light border-2 border-primary border-bottom'>
           <h5 className='offcanvas-title' id='offcanvasExampleLabel'>

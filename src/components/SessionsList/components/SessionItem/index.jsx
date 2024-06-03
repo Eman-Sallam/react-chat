@@ -1,35 +1,13 @@
 import React, { useContext } from 'react';
 import { ChatSessionsContext } from '../../../../Context/Sessions';
-import dayjs from 'dayjs';
 import style from './index.module.css';
-import * as bootstrap from 'bootstrap';
-window.bootstrap = bootstrap;
 
 const SessionItem = ({ sessionDetails, isSelected }) => {
-  let { isSmallScreen, sessions, setSessions, setSelectedSessionID } =
+  let { sessions, setSessions, setSelectedSessionID, displayForamttedDate } =
     useContext(ChatSessionsContext);
 
   const handleSelectedSessionID = () => {
     setSelectedSessionID(sessionDetails.id);
-
-    // to Close side menu on small screen after select session
-    if (isSmallScreen) {
-      let bsOffcanvas = bootstrap.Offcanvas.getInstance(
-        document.getElementById('mobileSessions')
-      );
-      bsOffcanvas.hide();
-    }
-  };
-
-  // Compare the current date with the display date to display "Today"
-  const displayForamttedDate = (dateTime) => {
-    const currentDate = dayjs();
-    if (currentDate.isSame(dateTime, 'day')) {
-      return `Today ${dayjs(dateTime).format('HH:mm')}`;
-    } else {
-      const formattedDate = dayjs(dateTime).format('MMM DD HH:mm');
-      return formattedDate;
-    }
   };
 
   //  Delete Selected Session &  Update Sessions to localstorge
