@@ -1,6 +1,7 @@
 .messagesContainer {
-  height: calc(100vh - 130px);
   min-height: calc(100% - 70px);
+  height: calc(100vh - 130px);
+  height: calc(100dvh - 130px);
   padding: 12px;
   margin: 0 auto;
 }
