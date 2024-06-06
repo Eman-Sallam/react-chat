@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { ChatSessionsContext } from '../../../../Context/Sessions';
 import style from './index.module.css';
+import displayForamttedDate from '../../../ForamttedDate/ForamttedDate';
 
 const SessionItem = ({ sessionDetails, isSelected }) => {
-  let { sessions, setSessions, setSelectedSessionID, displayForamttedDate } =
+  let { sessions, setSessions, setSelectedSessionID } =
     useContext(ChatSessionsContext);
 
   const handleSelectedSessionID = () => {

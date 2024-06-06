@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react';
-import dayjs from 'dayjs';
 
 export let ChatSessionsContext = createContext('');
 
@@ -18,8 +17,8 @@ const SessionsContextProvider = ({ children }) => {
 
   const [selectedSessionID, setSelectedSessionID] = useState(sessions[0].id);
 
+  // checked is Small Screen?
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
-
   const handleWindowSizeChange = () => {
     setIsSmallScreen(window.innerWidth <= 768);
   };
@@ -35,17 +34,6 @@ const SessionsContextProvider = ({ children }) => {
     localStorage.setItem('sessions', JSON.stringify(sessions));
   }, [sessions]);
 
-  // Compare the current date with the display date to display "Today"
-  const displayForamttedDate = (dateTime) => {
-    const currentDate = dayjs();
-    if (currentDate.isSame(dateTime, 'day')) {
-      return `Today ${dayjs(dateTime).format('HH:mm')}`;
-    } else {
-      const formattedDate = dayjs(dateTime).format('MMM DD HH:mm');
-      return formattedDate;
-    }
-  };
-
   return (
     <ChatSessionsContext.Provider
       value={{
@@ -53,8 +41,7 @@ const SessionsContextProvider = ({ children }) => {
         sessions,
         setSessions,
         selectedSessionID,
-        setSelectedSessionID,
-        displayForamttedDate
+        setSelectedSessionID
       }}>
       {children}
     </ChatSessionsContext.Provider>

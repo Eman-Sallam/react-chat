@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import style from './index.module.css';
 import { ChatSessionsContext } from '../../../../Context/Sessions';
+import displayForamttedDate from '../../../ForamttedDate/ForamttedDate';
 
 const MessageItem = ({ msg }) => {
   const isUserMsg = msg.sender === 'user';
-  let { isSmallScreen, displayForamttedDate } = useContext(ChatSessionsContext);
+  let { isSmallScreen } = useContext(ChatSessionsContext);
   return (
     <>
       {isUserMsg ? (
